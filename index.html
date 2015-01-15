@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table Generator</title>
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div class="page-container">
+		<h1 class="page-title">FOSSASIA Communties</h1>
+		<!-- table container -->
+		<div class="table-container"></div>
+		<!-- show a loading image for async request -->
+		<div class="img-loading">
+			<img align="center" src="loading.gif" class="loading">
+		</div>
+	</div>
+
+	<!-- scripts -->
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="http://fossasia.net/map/ffGeoJsonp.php?callback=generateTable"></script>
+</body>
+</html>

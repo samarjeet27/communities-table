@@ -19,12 +19,13 @@ function generateTable (data) {
 	var rows = [];
 	// table headers
 	var headers = ['Name', 'City/Region', 'Contact'];
+
 	// table root element
 	var table = $('<table>', {
-		class:'community-table'
+		class:'sortable community-table'
 	});
 	// create a td element
-
+	var thead = $('<thead>');
 	var tbody = $('<tbody>');
 
 	// generate table headers
@@ -33,10 +34,12 @@ function generateTable (data) {
 		var th = $('<th>', {
 			text: headers[header]
 		});
+		if (headers[header] == 'City/Region'){
+			th.addClass('sorttable_sorted');
+		}
 		headRow.append(th);
 	}
-	rows.push(headRow);
-
+	thead.append(headRow);
 
 	for( f in data.features ) {
 		var item = data.features[f];
@@ -94,6 +97,8 @@ function generateTable (data) {
 	for (row in rows){
 		tbody.append(rows[row]);
 	}
+	// add thead to table
+	table.append(thead);
 	// append table body
 	table.append(tbody);
 	// append to root
@@ -101,4 +106,7 @@ function generateTable (data) {
 
 	// remove loading sign
 	$('.img-loading').css('display', 'none');
+	// sort table
+	var tbl = document.getElementsByClassName('community-table')[0];
+	sorttable.makeSortable(tbl);
 }

@@ -22,7 +22,7 @@ function generateTable (data) {
 
 	// table root element
 	var table = $('<table>', {
-		class:'sortable community-table'
+		class:'community-table'
 	});
 	// create a td element
 	var thead = $('<thead>');
@@ -34,9 +34,6 @@ function generateTable (data) {
 		var th = $('<th>', {
 			text: headers[header]
 		});
-		if (headers[header] == 'City/Region'){
-			th.addClass('sorttable_sorted');
-		}
 		headRow.append(th);
 	}
 	thead.append(headRow);
@@ -53,7 +50,7 @@ function generateTable (data) {
 			text: property.name
 		});
 
-		var country = $('<p>').text(property.city);
+		var country = property.city;
 		// list of possible contacts
 		var contacts = ['facebook', 'twitter', 'irc', 'email', 'googleplus', 'phone', 'jabber'];
 		// create contact list
@@ -107,6 +104,5 @@ function generateTable (data) {
 	// remove loading sign
 	$('.img-loading').css('display', 'none');
 	// sort table
-	var tbl = document.getElementsByClassName('community-table')[0];
-	sorttable.makeSortable(tbl);
+	$('.community-table').tablesorter({sortList:[[1,0]]})
 }

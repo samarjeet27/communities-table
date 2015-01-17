@@ -74,7 +74,9 @@ function generateTable (data) {
 				if ( contact_name == 'phone') {
 					e.attr('href', 'tel:'+e.attr('href'))
 				}
-
+				if ( contact_name == 'twitter'){
+					e.attr('href', 'http://twitter.com/'+e.attr('href'));
+				}
 				var li = $('<li>');
 				li.append(e);
 				cList.append(li);
